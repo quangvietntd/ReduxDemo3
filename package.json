@@ -1,0 +1,35 @@
+{
+  "proxy": "http://localhost:3000/",
+  "name": "BTMovies",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0",
+    "apisauce": "^1.0.0",
+    "react": "16.5.0",
+    "react-native": "0.57.1",
+    "react-native-firebase": "^5.0.0",
+    "react-native-floating-label-text-input": "^0.1.5",
+    "react-native-floating-labels": "^1.1.9",
+    "react-native-modalbox": "^1.6.0",
+    "react-native-swipeout": "^2.3.6",
+    "react-navigation": "^2.17.0",
+    "react-navigation-redux-helpers": "^2.0.6",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.47.0",
+    "react-test-renderer": "16.5.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
