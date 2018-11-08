@@ -85,7 +85,7 @@ export default class Login extends Component {
                         alert('The password is invalid');
                         break;
                     default:
-                        alert('Register failed! Please check your email and password!');
+                        alert('Login failed! Please check your email and password!');
                         return;
                 }
             });
