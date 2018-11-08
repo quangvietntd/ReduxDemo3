@@ -18,9 +18,9 @@ export default class Register extends Component {
 
     onRegisterPress() {
         const { email, password, confirmPassword } = this.state;
-        if(email===''||password==='') {
+        if (email === '' || password === '') {
             alert('Please enter your email and password!');
-            return ;
+            return;
         }
         if (password !== confirmPassword) {
             alert('Password and Confirm Password does not match!');
@@ -32,8 +32,25 @@ export default class Register extends Component {
                 this.props.navigation.navigate('Movie');
             })
             .catch((error) => {
-                alert('Register failed! Please check your email and password!');
                 console.log(error);
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        alert('The email address you have entered is already registered!');
+                        break;
+                    case 'auth/invalid-email':
+                        alert('The email address you have entered is not valid!');
+                        break;
+                    case 'auth/operation-not-allowed':
+                        alert('email accounts are not enabled');
+                        break;
+                    case 'auth/weak-password':
+                        alert('The password must be at least 6 characters long!');
+                        break;
+                    default:
+                        alert('Register failed! Please check your email and password!');
+                        return;
+                }
+               
             });
     }
 

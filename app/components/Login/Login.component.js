@@ -63,13 +63,32 @@ export default class Login extends Component {
 
     onLoginPress() {
         const { email, password } = this.state;
-        if(email===''||password==='') {
+        if (email === '' || password === '') {
             alert('Please enter your email and password!');
-            return ;
+            return;
         }
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => this.props.navigation.navigate('Movie'))
-            .catch(() => alert('Authentication failed.'))
+            .catch((error) => {
+                console.log(error);
+                switch (error.code) {
+                    case 'auth/invalid-email':
+                        alert('The email address you have entered is not valid!');
+                        break;
+                    case 'auth/user-disabled':
+                        alert('Your account has been disabled');
+                        break;
+                    case 'auth/user-not-found':
+                        alert('Your account is not registered');
+                        break;
+                    case 'auth/wrong-password':
+                        alert('The password is invalid');
+                        break;
+                    default:
+                        alert('Register failed! Please check your email and password!');
+                        return;
+                }
+            });
     }
     render() {
         const { wrapper, header, labelInput, input, formInput, registerLabel } = styles;
